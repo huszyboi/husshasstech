@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HussHass Tech | Simple Business Website</title>
+    <style>
+        :root {
+            --primary: #115e59;
+            --primary-dark: #0f4b47;
+            --accent: #f59e0b;
+            --bg: #f8fafc;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --white: #ffffff;
+            --shadow: 0 10px 25px rgba(17, 94, 89, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: 0 auto;
+        }
+
+        .navbar {
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .hero {
+            background: linear-gradient(120deg, var(--primary), #1f7a73);
+            color: var(--white);
+            padding: 5rem 0;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            max-width: 650px;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            border: none;
+            border-radius: 10px;
+            padding: 0.8rem 1.3rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #111827;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.9rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .section-title p {
+            color: var(--muted);
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .services-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 1.2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .card h3 {
+            margin-bottom: 0.6rem;
+            color: var(--primary-dark);
+        }
+
+        .about-wrap {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .stats {
+            background: var(--white);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            padding: 1.2rem;
+        }
+
+        .stats li {
+            list-style: none;
+            margin-bottom: 0.7rem;
+            color: var(--muted);
+        }
+
+        .testimonials-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.8rem;
+        }
+
+        form {
+            background: var(--white);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            padding: 1.2rem;
+        }
+
+        .field {
+            margin-bottom: 1rem;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            font-size: 0.95rem;
+        }
+
+        .field textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .message {
+            margin-top: 0.8rem;
+            font-size: 0.93rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        footer {
+            background: #0b1320;
+            color: #d1d5db;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        @media (max-width: 800px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .about-wrap,
+            .contact-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo">HussHass Tech</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="container hero-content">
+            <h1>We build modern websites for small businesses</h1>
+            <p>
+                HussHass Tech helps businesses grow online with fast, responsive,
+                and professional websites built using HTML, CSS, and JavaScript.
+            </p>
+            <a class="btn btn-primary" href="#contact">Get a Free Quote</a>
+        </div>
+    </header>
+
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Simple, reliable, and affordable digital solutions.</p>
+            </div>
+            <div class="grid services-grid">
+                <article class="card">
+                    <h3>Business Website Design</h3>
+                    <p>Clean, responsive websites that present your business professionally.</p>
+                </article>
+                <article class="card">
+                    <h3>Landing Pages</h3>
+                    <p>High-converting landing pages for ads, promotions, and campaigns.</p>
+                </article>
+                <article class="card">
+                    <h3>Website Maintenance</h3>
+                    <p>Regular updates, bug fixes, and content changes to keep your site healthy.</p>
+                </article>
+                <article class="card">
+                    <h3>Speed Optimization</h3>
+                    <p>Improve performance and loading speed for better user experience.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container about-wrap">
+            <div class="card">
+                <h2>About HussHass Tech</h2>
+                <p>
+                    We are focused on creating user-friendly websites for startups and growing
+                    businesses. Our goal is to turn your business idea into a strong online presence.
+                </p>
+                <p>
+                    With practical experience in front-end development, we deliver websites
+                    that look good, work smoothly, and support your business goals.
+                </p>
+            </div>
+            <ul class="stats">
+                <li><strong>50+</strong> projects completed</li>
+                <li><strong>3+</strong> years of web development experience</li>
+                <li><strong>24/7</strong> support response for active clients</li>
+                <li><strong>100%</strong> mobile responsive design</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>What Clients Say</h2>
+                <p>Feedback from business owners we have worked with.</p>
+            </div>
+            <div class="grid testimonials-grid">
+                <article class="card">
+                    <p>"Our website now looks professional and helped us get more customers."</p>
+                    <strong>- Amina, Retail Store Owner</strong>
+                </article>
+                <article class="card">
+                    <p>"Fast delivery and clear communication. Highly recommended."</p>
+                    <strong>- David, Consultant</strong>
+                </article>
+                <article class="card">
+                    <p>"The team improved our page speed and mobile experience massively."</p>
+                    <strong>- Fatima, Logistics Startup</strong>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container contact-wrap">
+            <div class="contact-info">
+                <h2>Let's Work Together</h2>
+                <p>Email: hassanhussein4real@gmail.com</p>
+                <p>Phone: +2348039297101</p>
+                <p>Location: Abuja, Nigeria</p>
+            </div>
+            <form id="contactForm">
+                <div class="field">
+                    <label for="name">Your Name</label>
+                    <input id="name" type="text" required>
+                </div>
+                <div class="field">
+                    <label for="email">Email Address</label>
+                    <input id="email" type="email" required>
+                </div>
+                <div class="field">
+                    <label for="message">Project Details</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button class="btn btn-primary" type="submit">Send Message</button>
+                <p class="message" id="formMessage"></p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="year"></span> HussHass Tech. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const contactForm = document.getElementById("contactForm");
+        const formMessage = document.getElementById("formMessage");
+        const yearElement = document.getElementById("year");
+
+        yearElement.textContent = new Date().getFullYear();
+
+        contactForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            formMessage.textContent = "Thank you! Your message has been received. We will contact you soon.";
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
